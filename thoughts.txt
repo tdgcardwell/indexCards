@@ -1,6 +1,10 @@
-- creating and deleting cards
+- creating and deleting cards / editing content
   - prob similar to shot log
+    - for saving/recalling different boards
 
-- Editing content
+  - v similar to js guest list from Treehouse
+    - needs standard li as block styling
 
 - saving z-index
+  - not mission critical
+  prob add in to saving of position?
