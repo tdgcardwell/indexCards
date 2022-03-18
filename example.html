@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>draggable demo</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <style>
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: url(https://www.tilingtextures.com/wp-content/uploads/2018/12/0074-128x128.jpg);
+  }
+
+  .draggable {
+    width: 300px;
+    aspect-ratio: 5/3;
+    background: #eee;
+    transform: scale(1);
+    padding: .5rem;
+  }
+
+  .wrapper {
+    width: 100vw;
+    height: 90vh;
+    overflow: auto;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <script>
+        var positions = JSON.parse(localStorage.positions || "{}");
+        $(function() {
+            var d = $("[id=draggable]").attr("id", function(i) {
+                return "draggable_" + i
+            })
+            $.each(positions, function(id, pos) {
+                $("#" + id).css(pos)
+            })
+
+            d.draggable({
+                // containment: "#wrapper",
+                // scroll: false,
+                stack: ".stack",
+                stop: function(event, ui) {
+                    positions[this.id] = ui.position
+                    localStorage.positions = JSON.stringify(positions)
+                }
+            });
+        });
+    </script>
+
+    <h1>Draggable Cards!</h1>
+    <div id="wrapper">
+
+        <div id="draggable" class="ui-widget-content draggable stack">
+          <h2>Thing Happens</h2>
+          <p>><</p>
+          <p>+/-</p>
+
+        </div>
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+
+
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+        <div id="draggable" class="ui-widget-content draggable stack"></div>
+
+    </div>
+</body>
+
+
+<!-- <body>
+
+<div class="draggable stack">Drag me</div>
+<div class="draggable stack">Drag me</div>
+<div class="draggable stack">Drag me</div>
+<div class="draggable stack">Drag me</div>
+
+<script>
+$( ".draggable" ).draggable({
+  stack: ".stack",
+  stop: function(event, ui){
+    console.log(ui.position);
+  }
+});
+</script>
+
+
+
+</body> -->
+
+</html>

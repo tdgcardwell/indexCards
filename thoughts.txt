@@ -1,0 +1,6 @@
+- creating and deleting cards
+  - prob similar to shot log
+
+- Editing content
+
+- saving z-index
